@@ -1,1 +1,1 @@
-stty -ixon
+stty -ixon #DISABLE_FLOW_CONTROL

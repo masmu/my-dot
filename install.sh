@@ -12,7 +12,6 @@ ZSH_PLUGIN_REPOS=(
 function is_url() {
     regex='(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]'
     if [[ $1 =~ $regex ]]
-    then 
         echo "true"
     else
         echo ""
@@ -121,7 +120,7 @@ function restore_backup() {
 }
 
 function install_pkgs() {
-    sudo apt-get -y install curl zsh git byobu sed vim exuberant-ctags || {
+    sudo apt-get -y install curl zsh git byobu sed || {
         echo "Error during installing the dependencies!"
         exit 1
     }
@@ -177,21 +176,6 @@ function setup_zsh() {
         'stty -ixon #DISABLE_FLOW_CONTROL'
 }
 
-function setup_vim() {
-    backup_if_exists ~/.vim
-    backup_if_exists ~/.vimrc
-    download_file $REPO_PREFIX/vim/.vimrc ~/.vimrc
-    download_file $REPO_PREFIX/vim/.vimrc.keycodes ~/.vimrc.keycodes
-    vim +PlugInstall +qall
-    stty -ixon
-}
-
-function setup_ctags() {
-    backup_if_exists ~/.ctags
-    download_file $REPO_PREFIX/ctags/.ctags ~/.ctags
-}
-
-
 function install_all() {
     if [ ! $SKIP_PACKAGES ]; then
         install_pkgs
@@ -199,9 +183,7 @@ function install_all() {
     setup_bash
     setup_byobu
     setup_zsh
-    setup_vim
     setup_tmux
-    setup_ctags
     echo "Installation done!"
 }
 
@@ -212,9 +194,6 @@ function remove() {
     restore_backup ~/.zshenv
     restore_backup ~/.tmux.conf
     restore_backup ~/.oh-my-zsh
-    restore_backup ~/.vim
-    restore_backup ~/.vimrc
-    restore_backup ~/.ctags
     echo "Remove done!"
 }
 
@@ -227,10 +206,6 @@ function clean() {
     [[ -f ~/.zshenv ]] && rm ~/.zshenv
     [[ -f ~/.tmux.conf ]] && rm ~/.tmux.conf
     [[ -d ~/.oh-my-zsh ]] && rm -Rf ~/.oh-my-zsh
-    [[ -d ~/.vim ]] && rm -Rf ~/.vim
-    [[ -f ~/.vimrc ]] && rm ~/.vimrc
-    [[ -f ~/.vimrc.keycodes ]] && rm ~/.vimrc.keycodes
-    [[ -f ~/.ctags ]] && rm ~/.ctags
     echo "Clean done!"
 }
 
@@ -250,10 +225,6 @@ while [ "$#" -gt "0" ]; do
     --skip-packages)
         SKIP_PACKAGES="1"
         shift
-    ;;
-    --vim)
-        setup_vim
-        exit 0
     ;;
     --force)
         FORCE="1"
