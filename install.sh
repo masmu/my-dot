@@ -12,6 +12,7 @@ ZSH_PLUGIN_REPOS=(
 function is_url() {
     regex='(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]'
     if [[ $1 =~ $regex ]]
+    then
         echo "true"
     else
         echo ""
