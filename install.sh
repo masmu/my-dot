@@ -135,6 +135,20 @@ function setup_bash() {
     stty -ixon
 }
 
+function setup_local_bin() {
+    mkdir -p ~/.local/bin
+}
+
+function setup_micro() {
+    setup_local_bin
+    TMP_DIR="/tmp/micro/"
+    EXTRACT_DIR="$TMP_DIR/extract"
+    mkdir -p "$EXTRACT_DIR"
+    curl -o "$TMP_DIR/micro.tar.gz" -L https://github.com/zyedidia/micro/releases/download/v1.3.3/micro-1.3.3-linux64.tar.gz
+    tar -xvzf "$TMP_DIR/micro.tar.gz" -C "$EXTRACT_DIR"
+    find "$EXTRACT_DIR" -iname "micro" -exec cp "{}" ~/.local/bin \;
+}
+
 function setup_byobu() {
     backup_if_exists ~/.byobu
     [[ -d ~/.byobu ]] || mkdir ~/.byobu
@@ -185,6 +199,7 @@ function install_all() {
     setup_byobu
     setup_zsh
     setup_tmux
+    setup_micro
     echo "Installation done!"
 }
 
@@ -207,6 +222,7 @@ function clean() {
     [[ -f ~/.zshenv ]] && rm ~/.zshenv
     [[ -f ~/.tmux.conf ]] && rm ~/.tmux.conf
     [[ -d ~/.oh-my-zsh ]] && rm -Rf ~/.oh-my-zsh
+    [[ -f ~/.local/bin/micro ]] && rm ~/.local/bin/micro
     echo "Clean done!"
 }
 
@@ -221,6 +237,10 @@ while [ "$#" -gt "0" ]; do
     ;;
     --remove)
         remove
+        exit 0
+    ;;
+    --editor)
+        setup_micro
         exit 0
     ;;
     --skip-packages)
