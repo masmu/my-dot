@@ -6,7 +6,7 @@ TMP_PREFIX='/tmp'
 ZSH_PLUGIN_REPOS=(
     https://github.com/zsh-users/zsh-autosuggestions
     https://github.com/zsh-users/zsh-syntax-highlighting
-    https://github.com/zsh-users/zsh-history-substring-search
+    https://github.com/zdharma/history-search-multi-word
 )
 
 function is_url() {
@@ -180,7 +180,7 @@ function setup_zsh() {
         if [ ! -d ~/.zsh/$GIT_FOLDER ]; then
             install_git_repo $GIT_URL ~/.zsh/$GIT_FOLDER
         fi
-        LINE="source ~/.zsh/$GIT_FOLDER/$GIT_FOLDER.zsh"
+        LINE="source ~/.zsh/$GIT_FOLDER/$GIT_FOLDER.plugin.zsh"
         text_append ~/.zshrc "$LINE" "$LINE"
     done
     text_append ~/.zshrc '#SOURCE_PROFILE' \
