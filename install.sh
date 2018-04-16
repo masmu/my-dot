@@ -202,7 +202,7 @@ function setup_zsh() {
     text_append ~/.zshrc '#KEY-END-FIX' \
         'bindkey "^[[4~" end-of-line #KEY-END-FIX'
     text_append ~/.zshrc '#ALIAS-COLORCAT' \
-        'alias ccat='pygmentize -g' #ALIAS-COLORCAT'
+        'alias ccat="pygmentize -g" #ALIAS-COLORCAT'
 
     [[ -f ~/.zshenv ]] || touch ~/.zshenv
     text_append ~/.zshenv '#DISABLE_FLOW_CONTROL' \
