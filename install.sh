@@ -122,7 +122,7 @@ function restore_backup() {
 }
 
 function install_pkgs() {
-    sudo apt-get -y install curl zsh git byobu sed || {
+    sudo apt-get -y install curl zsh git byobu sed xclip || {
         echo "Error during installing the dependencies!"
         exit 1
     }
@@ -142,6 +142,10 @@ function setup_local_bin() {
 
 function setup_micro() {
     setup_local_bin
+
+    mkdir -p ~/.config/micro
+    download_file "$REPO_PREFIX/micro/settings.json" ~/.config/micro/settings.json
+
     TMP_DIR="/tmp/micro/"
     EXTRACT_DIR="$TMP_DIR/extract"
     case "$CPU_ARCHITECTURE" in
