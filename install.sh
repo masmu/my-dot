@@ -197,6 +197,10 @@ function setup_zsh() {
     done
     text_append ~/.zshrc '#SOURCE_PROFILE' \
         "[[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile' #SOURCE_PROFILE"
+    text_append ~/.zshrc '#KEY-HOME-FIX' \
+        'bindkey "^[[1~" beginning-of-line #KEY-HOME-FIX'
+    text_append ~/.zshrc '#KEY-END-FIX' \
+        'bindkey "^[[4~" end-of-line #KEY-END-FIX'
 
     [[ -f ~/.zshenv ]] || touch ~/.zshenv
     text_append ~/.zshenv '#DISABLE_FLOW_CONTROL' \
