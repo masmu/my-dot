@@ -8,6 +8,7 @@ ZSH_PLUGIN_REPOS=(
     https://github.com/zsh-users/zsh-syntax-highlighting
     https://github.com/zdharma/history-search-multi-word
 )
+CPU_ARCHITECTURE="$(uname -m)"
 
 function is_url() {
     regex='(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]'
@@ -143,8 +144,15 @@ function setup_micro() {
     setup_local_bin
     TMP_DIR="/tmp/micro/"
     EXTRACT_DIR="$TMP_DIR/extract"
+    case "$CPU_ARCHITECTURE" in
+        i?86) ARCH="linux32";;
+        x86_64) ARCH="linux64" ;;
+        armv?l) ARCH="arm" ;;
+    esac
+    VERSION="1.4.0"
+    DOWNLOAD_URL="https://github.com/zyedidia/micro/releases/download/v$VERSION/micro-$VERSION-$ARCH.tar.gz"
     mkdir -p "$EXTRACT_DIR"
-    curl -o "$TMP_DIR/micro.tar.gz" -L https://github.com/zyedidia/micro/releases/download/v1.3.3/micro-1.3.3-linux64.tar.gz
+    curl -o "$TMP_DIR/micro.tar.gz" -L $DOWNLOAD_URL
     tar -xvzf "$TMP_DIR/micro.tar.gz" -C "$EXTRACT_DIR"
     find "$EXTRACT_DIR" -iname "micro" -exec cp "{}" ~/.local/bin \;
 }
