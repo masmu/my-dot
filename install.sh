@@ -147,7 +147,7 @@ function setup_micro() {
     case "$CPU_ARCHITECTURE" in
         i?86) ARCH="linux32";;
         x86_64) ARCH="linux64" ;;
-        armv?l) ARCH="arm" ;;
+        armv?l) ARCH="linux-arm" ;;
     esac
     VERSION="1.4.0"
     DOWNLOAD_URL="https://github.com/zyedidia/micro/releases/download/v$VERSION/micro-$VERSION-$ARCH.tar.gz"
