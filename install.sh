@@ -145,6 +145,7 @@ function setup_micro() {
 
     mkdir -p ~/.config/micro
     download_file "$REPO_PREFIX/micro/settings.json" ~/.config/micro/settings.json
+    download_file "$REPO_PREFIX/micro/bindings.json" ~/.config/micro/bindings.json
 
     TMP_DIR="/tmp/micro/"
     EXTRACT_DIR="$TMP_DIR/extract"

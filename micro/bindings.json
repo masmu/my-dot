@@ -1,0 +1,26 @@
+{
+    "Alt-/": "lua:comment.comment",
+    "AltLeft": "PreviousSplit",
+    "AltRight": "NextSplit",
+    "AltShiftDown": "SpawnMultiCursorDown",
+    "AltShiftUp": "SpawnMultiCursorUp",
+    "AltShiftLeft": "SelectWordLeft",
+    "AltShiftRight": "SelectWordRight",
+    "ShiftUp": "SelectUp",
+    "ShiftDown": "SelectDown",
+    "CtrlUnderscore": "lua:comment.comment",
+    "Ctrl-W": "Unsplit",
+    "Ctrl-N": "FindNext",
+    "Ctrl-P": "FindPrevious",
+    "Ctrl-Q": "QuitAll",
+    "Ctrl-R": "lua:filemanager.toggle_tree",
+    "Ctrl-U": "ToggleMacro", // need extra key
+    "Ctrl-J": "PlayMacro", // need extra key
+    "CtrlDown": "CursorDown,CursorDown,CursorDown,CursorDown,CursorDown",
+    "CtrlShiftDown": "MoveLinesDown",
+    "CtrlShiftUp": "MoveLinesUp",
+    "CtrlSpace": "Autocomplete",
+    "CtrlUp": "CursorUp,CursorUp,CursorUp,CursorUp,CursorUp",
+    "Esc": "RemoveAllMultiCursors|Escape",
+    "Tab": "Autocomplete|IndentSelection|InsertTab"
+}
