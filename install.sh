@@ -168,6 +168,8 @@ function setup_byobu() {
     [[ -d ~/.byobu ]] || mkdir ~/.byobu
     [[ -f ~/.byobu/tmux.conf ]] && rm ~/.byobu/.tmux.conf
     install_symlink ~/.tmux.conf ~/.byobu/.tmux.conf
+    [[ -f ~/.byobu/keybindings.tmux ]] && rm ~/.byobu/keybindings.tmux
+    download_file "$REPO_PREFIX/byobu/keybindings.tmux" ~/.byobu/keybindings.tmux
     byobu-disable-prompt
 }
 
