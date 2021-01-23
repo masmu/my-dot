@@ -163,6 +163,7 @@ function setup_micro() {
         i?86) ARCH="linux32";;
         x86_64) ARCH="linux64" ;;
         armv?l) ARCH="linux-arm" ;;
+        aarch64) ARCH="linux-arm64" ;;
     esac
     VERSION="2.0.8"
     DOWNLOAD_URL="https://github.com/zyedidia/micro/releases/download/v$VERSION/micro-$VERSION-$ARCH.tar.gz"
