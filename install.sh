@@ -153,12 +153,13 @@ function setup_micro() {
         x86_64) ARCH="linux64" ;;
         armv?l) ARCH="linux-arm" ;;
     esac
-    VERSION="1.4.0"
+    VERSION="2.0.8"
     DOWNLOAD_URL="https://github.com/zyedidia/micro/releases/download/v$VERSION/micro-$VERSION-$ARCH.tar.gz"
     mkdir -p "$EXTRACT_DIR"
     curl -o "$TMP_DIR/micro.tar.gz" -L $DOWNLOAD_URL
     tar -xvzf "$TMP_DIR/micro.tar.gz" -C "$EXTRACT_DIR"
     find "$EXTRACT_DIR" -iname "micro" -exec cp "{}" ~/.local/bin \;
+    ~/.local/bin/micro -plugin install filemanager
 }
 
 function setup_byobu() {
