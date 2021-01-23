@@ -6,7 +6,7 @@
     "backup": true,
     "basename": false,
     "colorcolumn": 0,
-    "colorscheme": "default",
+    "colorscheme": "base16-tomorrow-night",
     "comment": true,
     "clipboard": "internal",
     "cursorline": true,

@@ -149,6 +149,14 @@ function setup_micro() {
     [[ -f ~/.config/micro/bindings.json ]] && rm ~/.config/micro/bindings.json
     download_file "$REPO_PREFIX/micro/bindings.json" ~/.config/micro/bindings.json
 
+    mkdir -p ~/.config/micro/syntax
+    [[ -f ~/.config/micro/syntax/python.yaml ]] && rm ~/.config/micro/syntax/python.yaml
+    download_file "$REPO_PREFIX/micro/syntax/python.yaml" ~/.config/micro/syntax/python.yaml
+
+    mkdir -p ~/.config/micro/colorschemes
+    [[ -f ~/.config/micro/colorschemes/base16-tomorrow-night.micro ]] && rm ~/.config/micro/colorschemes/base16-tomorrow-night.micro
+    download_file "$REPO_PREFIX/micro/colorschemes/base16-tomorrow-night.micro" ~/.config/micro/colorschemes/base16-tomorrow-night.micro
+
     TMP_DIR="/tmp/micro/"
     EXTRACT_DIR="$TMP_DIR/extract"
     case "$CPU_ARCHITECTURE" in
